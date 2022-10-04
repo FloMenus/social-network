@@ -2,6 +2,7 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../contexts/User";
+import { FriendsContext } from "../contexts/Friends";
 import { useState, useEffect } from "react";
 
 // images
@@ -13,17 +14,19 @@ import locationImage from "../images/loca.png";
 import passwordImage from "../images/password.png";
 
 const Profile = () => {
+  // context
   const { user } = useContext(UserContext);
+  const { friends } = useContext(FriendsContext);
+
+  // states
   const [infoTitle, setInfoTitle] = React.useState("Hi, my name is");
   const [infoValue, setInfoValue] = React.useState("");
 
-
-    useEffect(() => {
-        if (user) {
-            setInfoValue(user.name.first + " " + user.name.last);
-        }
-    }, [user]);
-
+  useEffect(() => {
+    if (user) {
+      setInfoValue(user.name.first + " " + user.name.last);
+    }
+  }, [user]);
 
   const infoName = () => {
     setInfoTitle("Hi, my name is");
@@ -85,33 +88,40 @@ const Profile = () => {
                   alt="mail"
                 />
               </button>
-              <button onMouseOver={() => infoBirth()}
-              className="user-card-info-item">
+              <button
+                onMouseOver={() => infoBirth()}
+                className="user-card-info-item"
+              >
                 <img
                   className="user-card-info-img"
                   src={birthImage}
                   alt="birth"
                 />
               </button>
-              <button 
-              onMouseOver={() => infoLocation()}
-              className="user-card-info-item">
+              <button
+                onMouseOver={() => infoLocation()}
+                className="user-card-info-item"
+              >
                 <img
                   className="user-card-info-img"
                   src={locationImage}
                   alt="phone"
                 />
               </button>
-              <button onMouseOver={() => infoPhone()}
-              className="user-card-info-item">
+              <button
+                onMouseOver={() => infoPhone()}
+                className="user-card-info-item"
+              >
                 <img
                   className="user-card-info-img"
                   src={phoneImage}
                   alt="location"
                 />
               </button>
-              <button onMouseOver={() => infoPassword()}
-              className="user-card-info-item">
+              <button
+                onMouseOver={() => infoPassword()}
+                className="user-card-info-item"
+              >
                 <img
                   className="user-card-info-img"
                   src={passwordImage}
@@ -121,9 +131,12 @@ const Profile = () => {
             </div>
           </div>
         </div>
+        
       ) : (
         <Navigate to="/" />
       )}
+{/* Return conditionel si user
+Dans le return si user, ternaire pour friends */}
     </>
   );
 };

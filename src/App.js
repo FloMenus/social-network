@@ -4,18 +4,21 @@ import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 
 import { UserContextProvider } from "./contexts/User";
+import { FriendContextProvider } from "./contexts/Friends";
 
 const App = () => {
   return (
     <>
-      <UserContextProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/profil" element={<Profile />} />
+          <UserContextProvider>
+            <Route path="/" element={<Login />} />
+            <FriendContextProvider>
+              <Route path="/profil" element={<Profile />} />
+            </FriendContextProvider>
+          </UserContextProvider>
         </Routes>
       </BrowserRouter>
-      </UserContextProvider>
     </>
   );
 };
