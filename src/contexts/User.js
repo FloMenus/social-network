@@ -9,7 +9,6 @@ const UserContextProvider = (props) => {
     const request = await fetch("https://randomuser.me/api/");
     const response = await request.json();
     setUser(response.results[0]);
-    console.log(response.results[0]);
   }
 
   const value = {

@@ -2,23 +2,25 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
+import Friends from "./pages/Friends";
 
 import { UserContextProvider } from "./contexts/User";
-import { FriendContextProvider } from "./contexts/Friends";
+import { FriendsContextProvider } from "./contexts/Friends";
 
 const App = () => {
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <UserContextProvider>
-            <Route path="/" element={<Login />} />
-            <FriendContextProvider>
+      <UserContextProvider>
+        <FriendsContextProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Login />} />
               <Route path="/profil" element={<Profile />} />
-            </FriendContextProvider>
-          </UserContextProvider>
-        </Routes>
-      </BrowserRouter>
+              <Route path="/friends" element={<Friends />} />
+            </Routes>
+          </BrowserRouter>
+        </FriendsContextProvider>
+      </UserContextProvider>
     </>
   );
 };

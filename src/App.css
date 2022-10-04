@@ -1,3 +1,5 @@
+
+
 .form-group {
   display: flex;
   flex-direction: column;
@@ -89,4 +91,24 @@
   cursor: pointer;
   filter: brightness(0.9) invert(.7) sepia(.5) hue-rotate(100deg) saturate(200%);
   transition: all 0.2s ease-in-out;
-} 
+}
+
+.friend-card {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding: 20px;
+  border-radius: 30px;
+  background-color: rgb(70, 172, 244);
+}
+
+.friends-button {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding: 20px;
+  border-radius: 30px;
+  background-color: rgb(15, 121, 197);
+}

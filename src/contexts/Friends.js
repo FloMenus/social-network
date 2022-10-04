@@ -3,14 +3,18 @@ import { createContext, useState } from "react";
 const FriendsContext = createContext({});
 
 const FriendsContextProvider = (props) => {
-  const [friends, setFriends] = useState([]);
+  const [friends, setFriends] = useState(null);
 
   const fetchFriends = async () => {
-    const request = await fetch(`https://randomuser.me/api/?results=${math.random(1, 30)}`);
-    const response = await request.json();
-    setFriends(response.results);
-    console.log(response.results);
-  }
+    if (!friends) {
+      const request = await fetch(
+        "https://randomuser.me/api/?results=10"
+      );
+      const response = await request.json();
+      setFriends(response.results);
+      console.log(friends);
+    }
+  };
 
   const value = {
     friends: friends,
@@ -18,7 +22,9 @@ const FriendsContextProvider = (props) => {
   };
 
   return (
-    <UserContext.Provider value={value}>{props.children}</UserContext.Provider>
+    <FriendsContext.Provider value={value}>
+      {props.children}
+    </FriendsContext.Provider>
   );
 };
 
