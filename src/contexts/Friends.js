@@ -7,9 +7,7 @@ const FriendsContextProvider = (props) => {
 
   const fetchFriends = async () => {
     if (!friends) {
-      const request = await fetch(
-        "https://randomuser.me/api/?results=10"
-      );
+      const request = await fetch("https://randomuser.me/api/?results=10");
       const response = await request.json();
       setFriends(response.results);
       console.log(friends);
